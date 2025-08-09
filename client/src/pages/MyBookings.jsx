@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../components/Title";
 import { assets } from "../assets/assets";
 import toast from "react-hot-toast";
@@ -12,7 +12,6 @@ function MyBookings() {
     try {
       const { data } = await axios.get("/api/bookings/user", {
         headers: { Authorization: `Bearer ${await getToken()}` },
-        withCredentials: true,
       });
       if (data.success) {
         setBookings(data.bookings);

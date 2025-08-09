@@ -68,7 +68,6 @@ function RoomDetails() {
         },
         {
           headers: { Authorization: `Bearer ${await getToken()}` },
-          withCredentials: true,
         }
       );
 

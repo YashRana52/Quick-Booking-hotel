@@ -26,7 +26,6 @@ export const AppProvider = ({ children }) => {
     try {
       const { data } = await axios.get("/api/rooms", {
         headers: { Authorization: `Bearer ${await getToken()}` },
-        withCredentials: true,
       });
       if (data.success) {
         setRooms(data.rooms);
@@ -44,7 +43,6 @@ export const AppProvider = ({ children }) => {
     try {
       const { data } = await axios.get("/api/user", {
         headers: { Authorization: `Bearer ${await getToken()}` },
-        withCredentials: true,
       });
       if (data.success) {
         setIsOwner(data.role === "hotelOwner");

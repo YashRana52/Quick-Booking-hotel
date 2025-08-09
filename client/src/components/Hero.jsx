@@ -16,7 +16,6 @@ function Hero() {
         { recentSearchedCities: destination },
         {
           headers: { Authorization: `Bearer ${await getToken()}` },
-          withCredentials: true,
         }
       );
 

@@ -14,7 +14,6 @@ function ListRoom() {
     try {
       const { data } = await axios.get("/api/rooms/owner", {
         headers: { Authorization: `Bearer ${await getToken()}` },
-        withCredentials: true,
       });
       if (data.success) {
         setRooms(data.rooms);
@@ -34,7 +33,6 @@ function ListRoom() {
         { roomId },
         {
           headers: { Authorization: `Bearer ${await getToken()}` },
-          withCredentials: true,
         }
       );
 
