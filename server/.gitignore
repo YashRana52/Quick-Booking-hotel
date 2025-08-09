@@ -1,0 +1,60 @@
+# =========================
+# Node.js / Backend ignores
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.*.local
+
+# Logs
+logs
+*.log
+logs/*.log
+backend/logs/
+backend/*.log
+
+# Coverage directory (if testing)
+coverage/
+
+# Temp files
+*.tmp
+*.temp
+
+# =========================
+# Frontend ignores (Vite/React)
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.cache/
+frontend/.next/
+
+# Local environment files
+frontend/.env
+frontend/.env.*.local
+
+# =========================
+# OS / Editor ignores
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Misc
+# =========================
+*.local
+*.bak
+*.backup
