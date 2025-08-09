@@ -5,6 +5,7 @@ import ExclusiveOffers from "../components/ExclusiveOffers";
 import Testimonial from "../components/Testimonial";
 import NewsLatter from "../components/NewsLatter";
 import RecommendedHotels from "../components/RecommendedHotels";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <ExclusiveOffers />
       <Testimonial />
       <NewsLatter />
+      <Footer />
     </>
   );
 }

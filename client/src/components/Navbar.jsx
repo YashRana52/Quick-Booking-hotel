@@ -6,7 +6,7 @@ import { useAppContext } from "../context/AppContext";
 
 const BookIcon = () => (
   <svg
-    className="w-4 h-4 text-gray-700"
+    className="w-4 h-4 text-gray-700 dark:text-gray-300"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -58,18 +58,22 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0  w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
-        isScrolled
-          ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-2 md:py-4"
-          : "py-4 md:py-6"
-      }`}
+      className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32
+        transition-all duration-500 z-50
+        ${
+          isScrolled
+            ? "bg-white/80 dark:bg-gray-900/80 shadow-md dark:shadow-black text-gray-700 dark:text-gray-300 backdrop-blur-lg py-2 md:py-4"
+            : "py-4 md:py-6 text-white"
+        }`}
     >
       {/* Logo */}
       <Link to="/">
         <img
           src={assets.logo1}
           alt="logo"
-          className={`h-15 w-30 ${isScrolled && "invert opacity-80"}`}
+          className={`h-15 w-30 transition-all duration-500 ${
+            isScrolled ? "invert opacity-80 dark:invert-0 dark:opacity-100" : ""
+          }`}
         />
       </Link>
 
@@ -80,13 +84,13 @@ const Navbar = () => {
             key={i}
             href={link.path}
             className={`group flex flex-col gap-0.5 ${
-              isScrolled ? "text-gray-700" : "text-white"
+              isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white"
             }`}
           >
             {link.name}
             <div
               className={`${
-                isScrolled ? "bg-gray-700" : "bg-white"
+                isScrolled ? "bg-gray-700 dark:bg-gray-300" : "bg-white"
               } h-0.5 w-0 group-hover:w-full transition-all duration-300`}
             />
           </a>
@@ -96,9 +100,12 @@ const Navbar = () => {
             onClick={() =>
               isOwner ? navigate("/owner") : setShowHotelReg(true)
             }
-            className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${
-              isScrolled ? "text-black" : "text-white"
-            } transition-all`}
+            className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all
+              ${
+                isScrolled
+                  ? "text-black dark:text-white border-black dark:border-white"
+                  : "text-white border-white"
+              }`}
           >
             {isOwner ? "Dashboard" : "List Your Hotel"}
           </button>
@@ -110,9 +117,9 @@ const Navbar = () => {
         <img
           src={assets.searchIcon}
           alt="search"
-          className={`${
-            isScrolled && "invert"
-          } h-7 transition-all duration-500`}
+          className={`h-7 transition-all duration-500 ${
+            isScrolled ? "invert dark:invert-0" : ""
+          }`}
         />
         {user ? (
           <UserButton>
@@ -127,9 +134,12 @@ const Navbar = () => {
         ) : (
           <button
             onClick={openSignIn}
-            className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500 ${
-              isScrolled ? "text-white bg-black" : "bg-white text-black"
-            }`}
+            className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500
+              ${
+                isScrolled
+                  ? "text-white bg-black hover:bg-gray-800"
+                  : "bg-white text-black hover:bg-gray-200"
+              }`}
           >
             Login
           </button>
@@ -152,27 +162,38 @@ const Navbar = () => {
         <img
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           src={assets.menuIcon}
-          alt=""
-          className={`${isScrolled && "invert"}h-4`}
+          alt="menu"
+          className={`${
+            isScrolled ? "invert dark:invert-0" : ""
+          } h-4 cursor-pointer`}
         />
       </div>
 
       {/* Mobile Menu */}
-
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-white text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-gray-800 transition-all duration-500 ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 w-full h-screen bg-white dark:bg-gray-900 text-base flex flex-col md:hidden
+          items-center justify-center gap-6 font-medium
+          text-gray-800 dark:text-gray-200 transition-all duration-500
+          ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <button
           className="absolute top-4 right-4"
           onClick={() => setIsMenuOpen(false)}
         >
-          <img src={assets.closeIcon} alt="closemenu" className="h-6.5" />
+          <img
+            src={assets.closeIcon}
+            alt="close menu"
+            className="h-6.5 invert dark:invert-0"
+          />
         </button>
 
         {navLinks.map((link, i) => (
-          <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
+          <a
+            key={i}
+            href={link.path}
+            onClick={() => setIsMenuOpen(false)}
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
             {link.name}
           </a>
         ))}
@@ -182,7 +203,9 @@ const Navbar = () => {
             onClick={() =>
               isOwner ? navigate("/owner") : setShowHotelReg(true)
             }
-            className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all"
+            className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer
+              transition-all border-gray-800 dark:border-gray-200
+              text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             {isOwner ? "Dashboard" : "List Your Hotel"}
           </button>
@@ -191,7 +214,7 @@ const Navbar = () => {
         {!user && (
           <button
             onClick={openSignIn}
-            className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500"
+            className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500 hover:bg-gray-800"
           >
             Login
           </button>
@@ -200,4 +223,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;

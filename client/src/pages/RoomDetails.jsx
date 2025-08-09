@@ -95,12 +95,14 @@ function RoomDetails() {
 
   return (
     room && (
-      <div className="py-28 md:py-35 px-4 md:px-16 lg:px-24 xl:px-32">
+      <div className="py-28 md:py-35 px-4 md:px-16 lg:px-24 xl:px-32 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {/* Room Details */}
         <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
           <h1 className="text-3xl font-playfair md:text-4xl">
             {room?.hotel?.name}{" "}
-            <span className="text-sm font-inter">({room?.roomType})</span>
+            <span className="text-sm font-inter text-gray-600 dark:text-gray-400">
+              ({room?.roomType})
+            </span>
           </h1>
           <p className="text-xs font-inter py-1.5 px-3 text-white bg-orange-500 rounded-full">
             20% OFF
@@ -110,17 +112,17 @@ function RoomDetails() {
         {/* Rating */}
         <div className="flex items-center gap-1 mt-2">
           <StarRating />
-          <p className="ml-2">100+ reviews</p>
+          <p className="ml-2 text-gray-700 dark:text-gray-300">100+ reviews</p>
         </div>
 
         {/* Address */}
-        <div className="flex items-center gap-1 text-gray-500 mt-2">
+        <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400 mt-2">
           <img src={assets.locationIcon} alt="" />
           <span>{room?.hotel?.address}</span>
         </div>
 
         {/* Images */}
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6 mt-6">
           <div className="lg:w-1/2 w-full">
             {mainImage && (
               <img
@@ -155,7 +157,7 @@ function RoomDetails() {
               {room?.amenities?.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800"
                 >
                   <img
                     src={facilityIcons[item]}
@@ -167,15 +169,17 @@ function RoomDetails() {
               ))}
             </div>
           </div>
-          <p className="text-2xl font-medium">${room?.pricePerNight}/night</p>
+          <p className="text-2xl font-medium text-gray-900 dark:text-gray-100">
+            ${room?.pricePerNight}/night
+          </p>
         </div>
 
         {/* Booking Form */}
         <form
           onSubmit={onSubmitHandler}
-          className="flex flex-col md:flex-row items-start md:items-center justify-between bg-white shadow-lg p-6 rounded-xl mx-auto mt-16 max-w-6xl"
+          className="flex flex-col md:flex-row items-start md:items-center justify-between bg-white dark:bg-gray-800 shadow-lg p-6 rounded-xl mx-auto mt-16 max-w-6xl"
         >
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-10 text-gray-500">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-10 text-gray-700 dark:text-gray-300">
             <div>
               <label className="font-medium">
                 Check-In
@@ -184,11 +188,11 @@ function RoomDetails() {
                   min={new Date().toISOString().split("T")[0]}
                   value={checkInDate}
                   onChange={(e) => setCheckInDate(e.target.value)}
-                  className="w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none"
+                  className="w-full rounded border border-gray-300 dark:border-gray-600 px-3 py-2 mt-1.5 outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
               </label>
             </div>
-            <div className="w-px h-15 bg-gray-300/70 max-md:hidden"></div>
+            <div className="w-px h-15 bg-gray-300/70 dark:bg-gray-600 max-md:hidden"></div>
             <div>
               <label className="font-medium">
                 Check-Out
@@ -198,11 +202,11 @@ function RoomDetails() {
                   value={checkOutDate}
                   onChange={(e) => setCheckOutDate(e.target.value)}
                   disabled={!checkInDate}
-                  className="w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none"
+                  className="w-full rounded border border-gray-300 dark:border-gray-600 px-3 py-2 mt-1.5 outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
               </label>
             </div>
-            <div className="w-px h-15 bg-gray-300/70 max-md:hidden"></div>
+            <div className="w-px h-15 bg-gray-300/70 dark:bg-gray-600 max-md:hidden"></div>
             <div>
               <label className="font-medium mb-1">Guests</label>
               <input
@@ -210,7 +214,7 @@ function RoomDetails() {
                 min="1"
                 value={guests}
                 onChange={(e) => setGuest(e.target.value)}
-                className="w-20 rounded border border-gray-300 px-3 py-2 outline-none"
+                className="w-20 rounded border border-gray-300 dark:border-gray-600 px-3 py-2 outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 required
               />
             </div>
@@ -234,14 +238,16 @@ function RoomDetails() {
               />
               <div>
                 <p className="text-base">{spec.title}</p>
-                <p className="text-gray-500">{spec.description}</p>
+                <p className="text-gray-500 dark:text-gray-400">
+                  {spec.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Description */}
-        <div className="max-w-3xl border-y border-gray-300 my-10 py-10 px-6 text-gray-700 rounded-lg bg-gray-50 leading-relaxed">
+        <div className="max-w-3xl border-y border-gray-300 dark:border-gray-600 my-10 py-10 px-6 text-gray-700 dark:text-gray-300 rounded-lg bg-gray-50 dark:bg-gray-900 leading-relaxed">
           <p>
             Guests will be allocated on the ground floor according to
             availability. You get a comfortable two-bedroom apartment with a
@@ -259,10 +265,10 @@ function RoomDetails() {
               className="h-14 w-14 md:h-18 md:w-18 rounded-full"
             />
             <div>
-              <p className="text-lg md:text-xl">
+              <p className="text-lg md:text-xl text-gray-900 dark:text-gray-100">
                 Hosted by {room?.hotel?.name}
               </p>
-              <div className="flex items-center mt-1">
+              <div className="flex items-center mt-1 text-gray-700 dark:text-gray-300">
                 <StarRating />
                 <p className="ml-2">100+ reviews</p>
               </div>

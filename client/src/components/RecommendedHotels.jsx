@@ -26,10 +26,11 @@ function RecommendedHotels() {
 
   return (
     recommended.length > 0 && (
-      <div className="flex flex-col items-center px-6 md:px-16 lg:px-24 bg-slate-50 py-20">
+      <div className="flex flex-col items-center px-6 md:px-16 lg:px-24 bg-slate-50 dark:bg-gray-900 py-20">
         <Title
           title="Hotels You Might Love"
           subTitle="Based on your recent searches, we’ve handpicked these stays just for you"
+          // optionally, you can add dark mode styles inside Title if needed
         />
 
         <div className="flex flex-wrap items-center justify-center gap-6 mt-20">

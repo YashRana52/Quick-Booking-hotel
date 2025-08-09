@@ -7,10 +7,14 @@ function Title({ title, subTitle, align, font }) {
         align === "left" && "md:items-start text-left"
       }`}
     >
-      <h1 className={`text-4xl md:text-[40px] ${font || "font-playfair"}`}>
+      <h1
+        className={`text-4xl md:text-[40px] ${
+          font || "font-playfair"
+        } text-gray-900 dark:text-gray-100`}
+      >
         {title}{" "}
       </h1>
-      <p className="text-sm md:text-base text-gray-500/90 mt-2 max-w-174">
+      <p className="text-sm md:text-base text-gray-500/90 dark:text-gray-400 mt-2 max-w-174">
         {subTitle}
       </p>
     </div>

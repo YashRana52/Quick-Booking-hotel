@@ -1,5 +1,13 @@
 import logo from "./logo.svg";
 import logo1 from "./logohotel.png";
+import hotel5 from "./hotel5.avif";
+import hotel1 from "./hotel1.avif";
+import hotel2 from "./hotel2.avif";
+import hotel3 from "./hotel3.avif";
+import hotel4 from "./hotel4.avif";
+import hotel6 from "./hotel6.avif";
+import hotel7 from "./hotel7.avif";
+import hotel8 from "./hotel8.avif";
 import searchIcon from "./searchIcon.svg";
 import userIcon from "./userIcon.svg";
 import calenderIcon from "./calenderIcon.svg";
@@ -41,6 +49,14 @@ import totalRevenueIcon from "./totalRevenueIcon.svg";
 
 export const assets = {
   logo,
+  hotel1,
+  hotel2,
+  hotel3,
+  hotel4,
+  hotel5,
+  hotel6,
+  hotel7,
+  hotel8,
   logo1,
   searchIcon,
   userIcon,
@@ -77,32 +93,30 @@ export const assets = {
 
 export const cities = ["Lucknow", "Kanpur", "Delhi", "Noida"];
 
-// Exclusive Offers Dummy Data
 export const exclusiveOffers = [
   {
     _id: 1,
-    title: "Summer Escape Package",
-    description: "Enjoy a complimentary night and daily breakfast",
-    priceOff: 25,
-    expiryDate: "Aug 31",
-    image: exclusiveOfferCardImg1,
+    title: "Monsoon Special",
+    description: "Get 20% off on stays during the rainy season",
+    priceOff: 20,
+    expiryDate: "Oct 15",
+    image: hotel5,
   },
   {
     _id: 2,
-    title: "Romantic Getaway",
-    description: "Special couples package including spa treatment",
-    priceOff: 20,
-    expiryDate: "Sep 20",
-    image: exclusiveOfferCardImg2,
+    title: "Festival Fiesta",
+    description: "Celebrate with 15% discount and free breakfast",
+    priceOff: 15,
+    expiryDate: "Nov 10",
+    image: hotel8,
   },
   {
     _id: 3,
-    title: "Luxury Retreat",
-    description:
-      "Book 60 days in advance and save on your stay at any of our luxury properties worldwide.",
-    priceOff: 30,
-    expiryDate: "Sep 25",
-    image: exclusiveOfferCardImg3,
+    title: "Weekend Relaxation",
+    description: "Enjoy a 25% discount on weekend bookings",
+    priceOff: 25,
+    expiryDate: "Dec 31",
+    image: hotel2,
   },
 ];
 
@@ -110,33 +124,33 @@ export const exclusiveOffers = [
 export const testimonials = [
   {
     id: 1,
-    name: "Emma Rodriguez",
-    address: "Barcelona, Spain",
+    name: "Amit Sharma",
+    address: "Mumbai, India",
     image:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+      "https://images.unsplash.com/profile-1741794901192-4eb1c4292675?w=150&dpr=2&crop=faces&bg=%23fff&h=150&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
     rating: 5,
     review:
-      "I've used many booking platforms before, but none compare to the personalized experience and attention to detail that QuickStay provides.",
+      "Hotel Rana se booking karna bahut aasan tha. Hotels bhi bahut achhe mile. Zaroor recommend karunga!",
   },
   {
     id: 2,
-    name: "Liam Johnson",
-    address: "New York, USA",
+    name: "Priya Singh",
+    address: "Delhi, India",
     image:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
-    rating: 4,
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=200",
+    rating: 3,
     review:
-      "QuickStay exceeded my expectations. The booking process was seamless, and the hotels were absolutely top-notch. Highly recommended!",
+      "Mujhe Hotel Rana ka customer service bahut pasand aaya. Booking fast thi aur stay comfortable raha.",
   },
   {
     id: 3,
-    name: "Sophia Lee",
-    address: "Seoul, South Korea",
+    name: "Ruchi Verma",
+    address: "Bangalore, India",
     image:
-      "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=200",
-    rating: 5,
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200",
+    rating: 4,
     review:
-      "Amazing service! I always find the best luxury accommodations through QuickStay. Their recommendations never disappoint!",
+      "Best platform for hotel bookings in India. Affordable prices aur good quality hotels milti hain.",
   },
 ];
 
