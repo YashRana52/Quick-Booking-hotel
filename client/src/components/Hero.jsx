@@ -6,12 +6,7 @@ function Hero() {
   const [destination, setDestination] = useState("");
   const { navigate, axios, getToken, setSearchCities } = useAppContext();
 
-  const bgImages = [
-    "/src/assets/hotel3.avif",
-    "/src/assets/hotel5.avif",
-    "/src/assets/hotel4.avif",
-  ];
-
+  const bgImages = [assets.hotel3, assets.hotel5, assets.hotel4];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Background image index har 3 second me change karo
