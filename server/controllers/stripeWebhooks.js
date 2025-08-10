@@ -3,7 +3,6 @@ import Booking from "../models/Booking.js";
 
 export const stripeWebhooks = async (req, res) => {
   const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
-
   const sig = req.headers["stripe-signature"];
   let event;
 
@@ -18,20 +17,17 @@ export const stripeWebhooks = async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  // Handle checkout session completion
-  if (event.type === "payment_intent.succeeded") {
+  //  Handle Checkout Session Completion
+  if (event.type === "checkout.session.completed") {
     const session = event.data.object;
+    const { bookingId } = session.metadata;
 
     try {
-      const { bookingId } = session.metadata;
-
-      // Mark booking as paid
       await Booking.findByIdAndUpdate(bookingId, {
         isPaid: true,
         paymentMethod: "Stripe",
       });
-
-      console.log(`Booking ${bookingId} marked as paid.`);
+      console.log(`✅ Booking ${bookingId} marked as paid.`);
     } catch (err) {
       console.error("Error updating booking:", err.message);
     }

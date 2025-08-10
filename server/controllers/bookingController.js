@@ -2,7 +2,7 @@ import transporter from "../config/nodemialer.js";
 import Booking from "../models/Booking.js";
 import Hotel from "../models/Hotel.js";
 import Room from "../models/Room.js";
-import stripe from "stripe";
+import stripe, { Stripe } from "stripe";
 // Function to check Availability of room
 
 export const checkAvailability = async ({
@@ -196,12 +196,23 @@ export const stripePayment = async (req, res) => {
     const { bookingId } = req.body;
 
     const booking = await Booking.findById(bookingId);
-    const roomData = await Room.findById(booking.room).populate("hotel");
-    const totalPrice = booking.totalPrice;
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Booking not found" });
+    }
 
+    const roomData = await Room.findById(booking.room).populate("hotel");
+    if (!roomData) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Room not found" });
+    }
+
+    const totalPrice = booking.totalPrice;
     const { origin } = req.headers;
 
-    const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY);
+    const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const line_items = [
       {
@@ -210,32 +221,25 @@ export const stripePayment = async (req, res) => {
           product_data: {
             name: roomData.hotel.name,
           },
-          unit_amount: totalPrice * 100,
+          unit_amount: Math.max(totalPrice * 100, 5000), // min ₹50
         },
         quantity: 1,
       },
     ];
 
-    // create Checkout Session
     const session = await stripeInstance.checkout.sessions.create({
       line_items,
       mode: "payment",
       success_url: `${origin}/loader/my-bookings`,
       cancel_url: `${origin}/my-bookings`,
-      metadata: {
-        bookingId,
-      },
+      metadata: { bookingId },
     });
 
-    res.json({
-      success: true,
-      url: session.url,
-    });
+    res.json({ success: true, url: session.url });
   } catch (error) {
-    console.error(error);
-    res.json({
-      success: false,
-      message: "Failed to process payment",
-    });
+    console.error("Stripe payment error:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to process payment" });
   }
 };
