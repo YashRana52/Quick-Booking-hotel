@@ -18,7 +18,7 @@ export const stripeWebhooks = async (req, res) => {
   }
 
   //  Handle Checkout Session Completion
-  if (event.type === "payment_intent.succeeded") {
+  if (event.type === "checkout.session.completed") {
     const session = event.data.object;
     const { bookingId } = session.metadata;
 
