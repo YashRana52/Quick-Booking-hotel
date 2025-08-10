@@ -17,22 +17,33 @@ export const stripeWebhooks = async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  //  Handle Checkout Session Completion
+  let bookingId;
+
+  // Handle Checkout Session Completion
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
-    const { bookingId } = session.metadata;
+    bookingId = session.metadata?.bookingId;
+  }
 
+  // Handle Payment Intent Succeeded
+  if (event.type === "payment_intent.succeeded") {
+    const paymentIntent = event.data.object;
+    bookingId = paymentIntent.metadata?.bookingId;
+  }
+
+  // If bookingId mila hai, update booking
+  if (bookingId) {
     try {
       await Booking.findByIdAndUpdate(bookingId, {
         isPaid: true,
         paymentMethod: "Stripe",
       });
-      console.log(` Booking ${bookingId} marked as paid.`);
+      console.log(`Booking ${bookingId} marked as paid.`);
     } catch (err) {
       console.error("Error updating booking:", err.message);
     }
   } else {
-    console.log("Unhandled event type:", event.type);
+    console.log("Event received but no bookingId found:", event.type);
   }
 
   res.json({ received: true });

@@ -209,7 +209,7 @@ export const stripePayment = async (req, res) => {
         .json({ success: false, message: "Room not found" });
     }
 
-    const totalPrice = booking.totalPrice;
+    const totalPrice = Number(booking.totalPrice);
     const { origin } = req.headers;
 
     const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -232,7 +232,7 @@ export const stripePayment = async (req, res) => {
       mode: "payment",
       success_url: `${origin}/loader/my-bookings`,
       cancel_url: `${origin}/my-bookings`,
-      metadata: { bookingId },
+      metadata: { bookingId: String(bookingId) },
     });
 
     res.json({ success: true, url: session.url });
