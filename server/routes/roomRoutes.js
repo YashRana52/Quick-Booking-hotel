@@ -11,7 +11,7 @@ import upload from "../middlewares/multer.js";
 const roomRouter = express.Router();
 
 roomRouter.post("/", upload.array("images", 4), protect, createRoom);
-roomRouter.get("/", protect, getRooms);
+roomRouter.get("/", getRooms);
 roomRouter.get("/owner", protect, getOwnerRooms);
 roomRouter.post("/toggle-availability", protect, toggleAvailability);
 
