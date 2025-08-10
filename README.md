@@ -18,6 +18,15 @@ Users can browse hotels, book rooms, make payments online, and receive instant b
 |-------------|----------------------|-----------------|
 | ![Home](./screenshots/home.png.png) | ![Details](./screenshots/details.png) | ![Booking](./screenshots/booking.png.png) | 
 ---
+## 📸 Screenshots
+
+## 📸 Screenshots
+
+| 🏠 Homepage | 🛏️ Hotel Details Page | 📧 Email Confirmation | 🛠️ Admin - Add Room Page |
+|-------------|----------------------|-----------------------|--------------------------|
+| ![Home](./screenshots/dash.png) | ![Details](./screenshots/details.png)  | ![Admin Add Room](./screenshots/add.png) |
+
+---
 
 ## ✨ Features
 
