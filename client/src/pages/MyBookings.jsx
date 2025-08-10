@@ -6,7 +6,7 @@ import { useAppContext } from "../context/AppContext";
 
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
-  const { getToken, axios, user } = useAppContext();
+  const { getToken, axios, user, currency } = useAppContext();
 
   const HandleUserBookings = async () => {
     try {
@@ -100,7 +100,8 @@ function MyBookings() {
                 </div>
 
                 <p className="text-gray-400 dark:text-gray-300 text-sm mt-1">
-                  Total: ${booking.totalPrice}
+                  Total: {currency}
+                  {booking.totalPrice}
                 </p>
               </div>
             </div>

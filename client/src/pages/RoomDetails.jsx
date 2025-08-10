@@ -9,7 +9,7 @@ function RoomDetails() {
   const { id } = useParams();
   const [room, setRoom] = useState(null);
   const [mainImage, setMainImage] = useState(null);
-  const { rooms, getToken, axios, navigate } = useAppContext();
+  const { rooms, getToken, axios, navigate, currency } = useAppContext();
 
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
@@ -170,7 +170,8 @@ function RoomDetails() {
             </div>
           </div>
           <p className="text-2xl font-medium text-gray-900 dark:text-gray-100">
-            ${room?.pricePerNight}/night
+            {currency}
+            {room?.pricePerNight}/night
           </p>
         </div>
 
