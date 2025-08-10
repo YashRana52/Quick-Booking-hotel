@@ -14,9 +14,9 @@ Users can browse hotels, book rooms, make payments online, and receive instant b
 
 ## 📸 Screenshots
 
-| 🏠 Homepage | 🛏️ Hotel Details Page | 📅 Booking Page | 📧 Email Confirmation |
+| 🏠 Homepage | 🛏️ Hotel Details Page | 📅 Booking Page |
 |-------------|----------------------|-----------------|-----------------------|
-| ![Home](./screenshots/home.png.png) | ![Details](./screenshots/details.png) | ![Booking](./screenshots/booking.png.png) | ![Email](./screenshots/email.png.jpg) |
+| ![Home](./screenshots/home.png.png) | ![Details](./screenshots/details.png) | ![Booking](./screenshots/booking.png.png) | 
 ---
 
 ## ✨ Features
