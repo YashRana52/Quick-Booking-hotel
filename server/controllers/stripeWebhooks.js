@@ -18,7 +18,7 @@ export const stripeWebhooks = async (req, res) => {
   }
 
   //  Handle Checkout Session Completion
-  if (event.type === "checkout.session.completed") {
+  if (event.type === "payment_intent.succeeded") {
     const session = event.data.object;
     const { bookingId } = session.metadata;
 
@@ -27,7 +27,7 @@ export const stripeWebhooks = async (req, res) => {
         isPaid: true,
         paymentMethod: "Stripe",
       });
-      console.log(`✅ Booking ${bookingId} marked as paid.`);
+      console.log(` Booking ${bookingId} marked as paid.`);
     } catch (err) {
       console.error("Error updating booking:", err.message);
     }
