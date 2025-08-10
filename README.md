@@ -23,7 +23,7 @@ Users can browse hotels, book rooms, make payments online, and receive instant b
 ## 📸 Screenshots
 
 | 🏠 Homepage | 🛏️ Hotel Details Page |  🛠️ Admin - Add Room Page |
-|-------------|----------------------|-----------------------|--------------------------|
+|-------------|----------------------|-----------------------|
 | ![Home](./screenshots/dash.png) | ![Details](./screenshots/details.png)  | ![Admin Add Room](./screenshots/add.png) |
 
 ---
